@@ -20,7 +20,8 @@ ts.setup {
     "lua",
     "rust",
     "javascript",
-    "typescript"
+    "typescript",
+    "bash",
   },
   autotag = {
     enable = true,

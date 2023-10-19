@@ -1,47 +1,28 @@
-local status, packer = pcall(require, 'packer')
-if (not status) then
-  print('Packer is not installed')
-  return
+local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
+if not vim.loop.fs_stat(lazypath) then
+  vim.fn.system({
+    "git",
+    "clone",
+    "--filter=blob:none",
+    "https://github.com/folke/lazy.nvim.git",
+    "--branch=stable", -- latest stable release
+    lazypath,
+  })
 end
+vim.opt.runtimepath:append(lazypath)
 
-vim.cmd [[packadd packer.nvim]]
-
-packer.startup(function(use)
-  use 'wbthomason/packer.nvim'
-
-  use 'tribela/vim-transparent'
-
-  use 'nvim-lualine/lualine.nvim'
-  use 'kyazdani42/nvim-web-devicons'
-
-  use 'nvim-lua/plenary.nvim'
-  use 'nvim-telescope/telescope.nvim'
-  use 'nvim-telescope/telescope-file-browser.nvim'
-
-  use {
-    'nvim-treesitter/nvim-treesitter',
-    run = function() require('nvim-treesitter.install').update({ with_sync = true }) end,
-  }
-
-  use 'windwp/nvim-autopairs'
-  use 'windwp/nvim-ts-autotag'
-
-  use 'neovim/nvim-lspconfig'
-  use 'williamboman/mason.nvim'
-  use 'williamboman/mason-lspconfig.nvim'
-  use 'onsails/lspkind-nvim'
-
-  use "hrsh7th/nvim-cmp"
-  use "hrsh7th/cmp-nvim-lsp"
-  use "hrsh7th/vim-vsnip"
-
-  use "hrsh7th/cmp-path"
-  use "hrsh7th/cmp-buffer"
-
-  use {
-  'lewis6991/gitsigns.nvim',
-  config = function()
-    require('gitsigns').setup()
-  end
-}
-end)
+-- Lazy load plugins
+local lazy = require("lazy")
+lazy.setup({
+  -- copilot
+  'github/copilot.vim',
+  -- 背景透過
+  'tribela/vim-transparent',
+  -- ステータスライン
+  'nvim-lualine/lualine.nvim',
+  'kyazdani42/nvim-web-devicons',
+  -- autopairs
+  'windwp/nvim-autopairs',
+  -- treesitterを入れたら有効化
+  -- 'windwp/nvim-ts-autotag',
+})
