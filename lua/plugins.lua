@@ -35,4 +35,10 @@ lazy.setup({
   -- autopairs
   'windwp/nvim-autopairs',
   'windwp/nvim-ts-autotag',
+
+  -- coc.nvim
+  {
+    "neoclide/coc.nvim",
+    branch = "release",
+  }
 })
