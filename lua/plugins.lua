@@ -40,5 +40,8 @@ lazy.setup({
   {
     "neoclide/coc.nvim",
     branch = "release",
-  }
+  },
+
+  -- git
+  'tpope/vim-fugitive'
 })

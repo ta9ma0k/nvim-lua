@@ -1,5 +1,18 @@
 {
   "languageserver": {
+    "dart": {
+       "command": "dart",
+        "args": [
+           "/usr/lib/dart/bin/snapshots/analysis_server.dart.snapshot",
+           "--lsp",
+           "--client-id",
+           "vim",
+           "--client-version",
+           "coc.nvim",
+        ],
+        "filetypes": ["dart"],
+        "trace.server": "verbose"
+    },
   },
   "suggest.completionItemKindLabels": {
     "function": "\uf794",
@@ -27,4 +40,5 @@
     "typeParameter": "\uf278",
     "default": "\uf29c"
   },
+  "deno.enable": true
 }
